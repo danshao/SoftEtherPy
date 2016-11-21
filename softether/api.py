@@ -587,6 +587,25 @@ class SoftEtherAPI(object):
 
         return self.call_method('CreateUser', payload)
 
+    def create_user_cert(self, hub_name=None, name=None, group_name=None, realname=None, note=None, created_time=None,
+                         updated_time=None, expire_time=None, num_login=None, common_name=None):
+        payload = {
+            'HubName': ('string', [hub_name]),
+            'Name': ('string', [name]),
+            'GroupName': ('string', [group_name]),
+            'Realname': ('ustring', [realname]),
+            'Note': ('ustring', [note]),
+            'CreatedTime': ('int64', [created_time]),
+            'UpdatedTime': ('int64', [updated_time]),
+            'ExpireTime': ('int', [expire_time]),
+            'NumLogin': ('int', [num_login]),
+            'CommonName': ('ustring', [common_name]),
+            'AuthType': ('int', [3])
+        }
+
+        return self.call_method('CreateUser', payload)
+
+
     def set_user(self, hub_name=None, name=None, group_name=None, realname=None, note=None, created_time=None, updated_time=None, expire_time=None, num_login=None):
         payload = {
             'HubName': ('string', [hub_name]),
